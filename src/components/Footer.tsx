@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { POWERED_BY, SITE_CONTACT_EMAIL, MAIN_CONTACT } from '@/lib/constants';
+import Logo from './Logo';
 
 interface FooterProps {
   isPartnerPortal: boolean;
@@ -20,14 +21,7 @@ export default function Footer({
         <div className="grid md:grid-cols-4 gap-12 mb-20">
           {/* Brand */}
           <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1E3A5F] rounded flex items-center justify-center text-white font-bold text-sm">
-                H
-              </div>
-              <span className="text-lg font-bold tracking-tight text-[#1E3A5F] uppercase">
-                HomeReadyCA
-              </span>
-            </div>
+            <Logo size="sm" />
             <p className="text-slate-500 max-w-sm leading-relaxed">
               Your premium guide to navigating the California housing market.
               Education first, transparency always.

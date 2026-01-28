@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import Logo from './Logo';
 
 interface HeaderProps {
   isPartnerPortal: boolean;
@@ -41,13 +42,8 @@ export default function Header({
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#1E3A5F] rounded-lg flex items-center justify-center text-white font-bold text-xl">
-            H
-          </div>
-          <span className="text-xl font-bold tracking-tight text-[#1E3A5F] uppercase">
-            HomeReadyCA
-          </span>
+        <Link href="/" className="flex items-center">
+          <Logo size="md" />
         </Link>
 
         {/* Desktop Navigation */}
