@@ -1,3 +1,6 @@
+// Accurate California silhouette path - traced from reference logo
+const CALIFORNIA_PATH = "M42 13L44 13L44.5 14L44 16L42 18L41 20L40 20.5L39 21L38 23L37 23.5L36.5 24L36 25L35.5 26.5L35 27L34 27.5L33 29L32 30L31.5 31L31 32L30.5 33.5L30 35L29.5 37L29 39L29.5 41L30 43L31 45L32.5 47L34 48.5L36 50L37 51L36 52L34 51.5L32 50.5L30 50L28 49L26.5 47.5L25.5 45.5L25 43L24.5 40L24.5 37L25 34L25.5 31L26.5 28L28 25L29.5 23L31 21L33 19L35 17L37 15.5L39 14L41 13L42 13Z";
+
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   variant?: 'light' | 'dark';
@@ -12,7 +15,7 @@ export default function Logo({ size = 'md', variant = 'light', showWordmark = tr
   };
 
   const { icon, fontSize } = dimensions[size];
-  const strokeColor = variant === 'light' ? '#1E3A5F' : 'white';
+  const fillColor = variant === 'light' ? '#1E3A5F' : 'white';
   const textColor = variant === 'light' ? 'text-[#1E3A5F]' : 'text-white';
 
   return (
@@ -24,17 +27,19 @@ export default function Logo({ size = 'md', variant = 'light', showWordmark = tr
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* House outline */}
+        {/* House outline - filled shape matching reference */}
         <path
-          d="M32 4L4 28V60H24V44H40V60H60V28L32 4Z"
-          stroke={strokeColor}
-          strokeWidth="5"
-          fill="none"
-          strokeLinejoin="miter"
+          d="M32 2L0 30H8V62H24V46H40V62H56V30H64L32 2Z"
+          fill={fillColor}
         />
-        {/* California state silhouette - accurate outline */}
+        {/* Door cutout */}
         <path
-          d="M39.5 16L40.5 16.5L41 17.5L40.5 19L39 20L38.5 21.5L39 23L38 24.5L37 25L36 25.5L35.5 27L36 28L35.5 29.5L34.5 30L34 31L34.5 32.5L34 34L33 35L32.5 36.5L33 38L34 39.5L35.5 41L37 43L38.5 44.5L38 45.5L36.5 45L35 44L33 44.5L31.5 45L30 44.5L29 43L28 41L27.5 39L27 37L26.5 35L26 33L26.5 31L27 29L27.5 27L28.5 25L29.5 23L31 21L32.5 19.5L34 18L36 17L38 16L39.5 16Z"
+          d="M24 46H40V62H24V46Z"
+          fill="white"
+        />
+        {/* California state silhouette */}
+        <path
+          d={CALIFORNIA_PATH}
           fill="#D4A853"
         />
       </svg>
@@ -49,7 +54,7 @@ export default function Logo({ size = 'md', variant = 'light', showWordmark = tr
 
 // Icon-only version for favicons
 export function LogoIcon({ size = 32, variant = 'light' }: { size?: number; variant?: 'light' | 'dark' }) {
-  const strokeColor = variant === 'light' ? '#1E3A5F' : 'white';
+  const fillColor = variant === 'light' ? '#1E3A5F' : 'white';
 
   return (
     <svg
@@ -59,16 +64,19 @@ export function LogoIcon({ size = 32, variant = 'light' }: { size?: number; vari
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      {/* House outline - filled shape */}
       <path
-        d="M32 4L4 28V60H24V44H40V60H60V28L32 4Z"
-        stroke={strokeColor}
-        strokeWidth="6"
-        fill="none"
-        strokeLinejoin="miter"
+        d="M32 2L0 30H8V62H24V46H40V62H56V30H64L32 2Z"
+        fill={fillColor}
       />
-      {/* California state silhouette - accurate outline */}
+      {/* Door cutout */}
       <path
-        d="M39.5 16L40.5 16.5L41 17.5L40.5 19L39 20L38.5 21.5L39 23L38 24.5L37 25L36 25.5L35.5 27L36 28L35.5 29.5L34.5 30L34 31L34.5 32.5L34 34L33 35L32.5 36.5L33 38L34 39.5L35.5 41L37 43L38.5 44.5L38 45.5L36.5 45L35 44L33 44.5L31.5 45L30 44.5L29 43L28 41L27.5 39L27 37L26.5 35L26 33L26.5 31L27 29L27.5 27L28.5 25L29.5 23L31 21L32.5 19.5L34 18L36 17L38 16L39.5 16Z"
+        d="M24 46H40V62H24V46Z"
+        fill={variant === 'light' ? 'white' : '#1E3A5F'}
+      />
+      {/* California state silhouette */}
+      <path
+        d={CALIFORNIA_PATH}
         fill="#D4A853"
       />
     </svg>
