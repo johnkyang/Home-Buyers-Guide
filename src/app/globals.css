@@ -1,3 +1,6 @@
+/* Google Fonts - Inter - must be before tailwindcss import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
 :root {
@@ -5,12 +8,15 @@
   --color-primary: #1E3A5F;
   --color-secondary: #D4A853;
   --color-accent: #2AA89A;
-  --color-background: #FAFBFC;
+  --color-emerald: #10B981;
+  --color-gold: #D4AF37;
+  --color-background: #F9FAFB;
+  --color-background-dark: #0F172A;
   --color-text: #1F2937;
   --color-muted: #6B7280;
 
   /* Semantic Colors */
-  --background: #FAFBFC;
+  --background: #F9FAFB;
   --foreground: #1F2937;
 }
 
@@ -20,15 +26,45 @@
   --color-primary: #1E3A5F;
   --color-secondary: #D4A853;
   --color-accent: #2AA89A;
+  --color-emerald: #10B981;
+  --color-gold: #D4AF37;
   --color-muted: #6B7280;
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.wallet-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero gradient with house background */
+.hero-gradient {
+  background: linear-gradient(rgba(10, 15, 28, 0.7), rgba(10, 15, 28, 0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000');
+  background-size: cover;
+  background-position: center;
 }
 
 /* Custom Utilities */
@@ -36,39 +72,42 @@ body {
   background-color: var(--color-primary);
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   transition: all 0.2s;
 }
 
 .btn-primary:hover {
-  background-color: #162d4a;
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .btn-secondary {
   background-color: var(--color-secondary);
   color: var(--color-primary);
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  border-radius: 0.75rem;
+  font-weight: 700;
   transition: all 0.2s;
+  box-shadow: 0 10px 25px -5px rgba(212, 168, 83, 0.3);
 }
 
 .btn-secondary:hover {
-  background-color: #c49943;
+  filter: brightness(1.1);
+  transform: scale(1.02);
 }
 
 .btn-accent {
-  background-color: var(--color-accent);
+  background-color: var(--color-emerald);
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   transition: all 0.2s;
 }
 
 .btn-accent:hover {
-  background-color: #248f83;
+  opacity: 0.9;
 }
 
 /* Form Inputs */
@@ -76,7 +115,7 @@ body {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -90,7 +129,95 @@ body {
 /* Card Styles */
 .card {
   background: white;
-  border-radius: 0.75rem;
+  border-radius: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-secondary);
+}
+
+/* Module card styles */
+.module-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.module-card:hover {
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-secondary);
+}
+
+.module-card:hover .module-number {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  height: 4px;
+  width: 100%;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-secondary);
+  width: 0;
+  transition: width 0.7s ease-out;
+}
+
+.module-card:hover .progress-bar-fill {
+  width: 100%;
+}
+
+/* Pulse animation for badge */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* CTA gradient background */
+.cta-gradient {
+  background: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-gradient::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  filter: blur(100px);
 }

@@ -18,22 +18,32 @@ export default async function RegisterPage() {
   const subdomain = await getSubdomain();
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[80vh] flex items-center justify-center py-12 px-6">
       <div className="max-w-md w-full">
+        {/* Header */}
         <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4A853]/10 text-[#D4A853] font-semibold text-xs tracking-widest uppercase mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#D4A853] animate-pulse" />
+            100% Free Access
+          </div>
           <h1 className="text-3xl font-bold text-[#1E3A5F]">Create Your Account</h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-slate-600">
             Get free access to the complete California homebuyer course
           </p>
         </div>
 
-        <div className="card">
+        {/* Form Card */}
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
           <RegisterForm subdomain={subdomain} />
         </div>
 
-        <p className="text-center mt-6 text-sm text-gray-600">
+        {/* Footer */}
+        <p className="text-center mt-6 text-sm text-slate-600">
           Already have an account?{' '}
-          <a href="/login" className="text-[#1E3A5F] font-medium hover:underline">
+          <a
+            href="/login"
+            className="text-[#D4A853] font-semibold hover:underline"
+          >
             Sign in
           </a>
         </p>
