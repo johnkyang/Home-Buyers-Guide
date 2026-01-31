@@ -108,12 +108,12 @@ export default function Header({
               <Image
                 src={headshotUrl}
                 alt={contactName}
-                width={52}
-                height={52}
-                className="rounded-full object-cover border-[3px] border-white shadow-lg"
+                width={56}
+                height={56}
+                className="rounded-full object-cover"
               />
             ) : (
-              <div className="w-[52px] h-[52px] rounded-full bg-[#1E3A5F] flex items-center justify-center border-[3px] border-white shadow-lg">
+              <div className="w-14 h-14 rounded-full bg-[#1E3A5F] flex items-center justify-center">
                 <span className="text-sm font-bold text-white">{initials}</span>
               </div>
             )}
@@ -226,12 +226,12 @@ export default function Header({
                 <Image
                   src={headshotUrl}
                   alt={contactName}
-                  width={56}
-                  height={56}
-                  className="rounded-full object-cover border-[3px] border-white shadow-lg"
+                  width={60}
+                  height={60}
+                  className="rounded-full object-cover"
                 />
               ) : (
-                <div className="w-14 h-14 rounded-full bg-[#1E3A5F] flex items-center justify-center border-[3px] border-white shadow-lg">
+                <div className="w-[60px] h-[60px] rounded-full bg-[#1E3A5F] flex items-center justify-center">
                   <span className="text-sm font-bold text-white">{initials}</span>
                 </div>
               )}
