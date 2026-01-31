@@ -4,7 +4,7 @@ export const MAIN_CONTACT = {
   phone: '(818) 445-6354',
   email: 'jyang@loandepot.com',
   nmls: '242839',
-  headshotUrl: '/images/john-yang-headshot.jpg', // Placeholder
+  headshotUrl: '/john-yang-headshot.png',
   scheduleUrl: process.env.MAIN_SCHEDULE_URL || 'https://calendly.com/thejohnyangteam/30min',
   preApprovedUrl: process.env.MAIN_PREAPPROVED_URL || 'https://www.loandepot.com/jyang',
   applyUrl: process.env.MAIN_APPLY_URL || 'https://www.loandepot.com/jyang',
