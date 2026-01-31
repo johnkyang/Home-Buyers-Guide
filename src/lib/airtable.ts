@@ -245,7 +245,7 @@ export async function createBuyer(data: {
   if (!response.ok) {
     const error = await response.text();
     console.error('Airtable create buyer error:', error);
-    throw new Error('Failed to create buyer record');
+    throw new Error(`Failed to create buyer record: ${error}`);
   }
 
   const record = await response.json();
