@@ -219,7 +219,8 @@ export async function createBuyer(data: {
   const tableId = process.env.BUYERS_TABLE_ID;
   if (!tableId) throw new Error('BUYERS_TABLE_ID is not configured');
 
-  const now = new Date().toISOString();
+  // Airtable date fields expect YYYY-MM-DD format
+  const now = new Date().toISOString().split('T')[0];
 
   const fields: Record<string, unknown> = {
     'Full Name': data.fullName,
