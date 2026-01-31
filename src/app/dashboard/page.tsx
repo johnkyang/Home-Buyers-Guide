@@ -38,20 +38,28 @@ export const metadata = {
 };
 
 export default async function DashboardPage() {
-  const session = await getSession();
+  let session;
+  try {
+    session = await getSession();
+  } catch (error) {
+    console.error('Session error:', error);
+    redirect('/login');
+  }
 
   if (!session) {
     redirect('/login');
   }
 
-  const buyer = await getBuyerById(session.user.id);
-
-  if (!buyer) {
-    redirect('/login');
+  let completedLessons: string[] = [];
+  try {
+    const buyer = await getBuyerById(session.user.id);
+    if (buyer) {
+      completedLessons = buyer.progress.completedLessons || [];
+    }
+  } catch (error) {
+    console.error('Error fetching buyer:', error);
+    // Continue with empty progress rather than crashing
   }
-
-  const { progress } = buyer;
-  const completedLessons = progress.completedLessons || [];
 
   // Calculate progress for each module
   const modulesWithProgress = MODULES.map((module) => {

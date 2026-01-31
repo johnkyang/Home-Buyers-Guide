@@ -189,21 +189,30 @@ export async function getBuyerByEmail(email: string): Promise<Buyer | null> {
 
 export async function getBuyerById(id: string): Promise<Buyer | null> {
   const tableId = process.env.BUYERS_TABLE_ID;
-  if (!tableId) throw new Error('BUYERS_TABLE_ID is not configured');
-
-  const url = `${getBaseUrl()}/${tableId}/${id}`;
-
-  const response = await fetch(url, {
-    headers: getHeaders(),
-    cache: 'no-store',
-  });
-
-  if (!response.ok) {
+  if (!tableId) {
+    console.error('BUYERS_TABLE_ID is not configured');
     return null;
   }
 
-  const record = await response.json();
-  return mapBuyerRecord(record);
+  try {
+    const url = `${getBaseUrl()}/${tableId}/${id}`;
+
+    const response = await fetch(url, {
+      headers: getHeaders(),
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      console.error('getBuyerById failed:', response.status, await response.text());
+      return null;
+    }
+
+    const record = await response.json();
+    return mapBuyerRecord(record);
+  } catch (error) {
+    console.error('getBuyerById error:', error);
+    return null;
+  }
 }
 
 export async function createBuyer(data: {

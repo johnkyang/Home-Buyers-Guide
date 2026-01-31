@@ -25,7 +25,14 @@ export async function generateStaticParams() {
 export default async function LessonPage({ params }: LessonPageProps) {
   const { moduleId, lessonId } = await params;
 
-  const session = await getSession();
+  let session;
+  try {
+    session = await getSession();
+  } catch (error) {
+    console.error('Session error:', error);
+    redirect('/login');
+  }
+
   if (!session) {
     redirect('/login');
   }
@@ -37,9 +44,16 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const buyer = await getBuyerById(session.user.id);
-  const completedLessons = buyer?.progress.completedLessons || [];
-  const isCompleted = completedLessons.includes(lessonId);
+  let completedLessons: string[] = [];
+  let isCompleted = false;
+  try {
+    const buyer = await getBuyerById(session.user.id);
+    completedLessons = buyer?.progress.completedLessons || [];
+    isCompleted = completedLessons.includes(lessonId);
+  } catch (error) {
+    console.error('Error fetching buyer:', error);
+    // Continue with empty progress rather than crashing
+  }
 
   const nextLesson = getNextLesson(moduleId, lessonId);
   const prevLesson = getPreviousLesson(moduleId, lessonId);
