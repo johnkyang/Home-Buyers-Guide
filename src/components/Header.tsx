@@ -108,18 +108,18 @@ export default function Header({
               <Image
                 src={headshotUrl}
                 alt={contactName}
-                width={40}
-                height={40}
-                className="rounded-full object-cover border-2 border-white shadow-md"
+                width={52}
+                height={52}
+                className="rounded-full object-cover border-[3px] border-white shadow-lg"
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center border-2 border-white shadow-md">
-                <span className="text-xs font-bold text-white">{initials}</span>
+              <div className="w-[52px] h-[52px] rounded-full bg-[#1E3A5F] flex items-center justify-center border-[3px] border-white shadow-lg">
+                <span className="text-sm font-bold text-white">{initials}</span>
               </div>
             )}
-            <div className="text-xs">
+            <div className="text-sm">
               <p className="font-bold text-[#1E3A5F]">{contactName}</p>
-              {nmls && <p className="text-slate-400">NMLS #{nmls}</p>}
+              {nmls && <p className="text-slate-400 text-xs">NMLS #{nmls}</p>}
             </div>
           </div>
           <a
@@ -221,17 +221,17 @@ export default function Header({
 
           {/* Contact Info (Mobile) */}
           <div className="mt-6 pt-4 border-t border-slate-200">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {headshotUrl ? (
                 <Image
                   src={headshotUrl}
                   alt={contactName}
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
+                  width={56}
+                  height={56}
+                  className="rounded-full object-cover border-[3px] border-white shadow-lg"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-full bg-[#1E3A5F] flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-[#1E3A5F] flex items-center justify-center border-[3px] border-white shadow-lg">
                   <span className="text-sm font-bold text-white">{initials}</span>
                 </div>
               )}
