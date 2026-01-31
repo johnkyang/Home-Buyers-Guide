@@ -40,20 +40,31 @@ export async function verifySession(token: string): Promise<Session | null> {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
     return payload as unknown as Session;
-  } catch {
+  } catch (error) {
+    console.error('Session verification failed:', error);
     return null;
   }
 }
 
 export async function getSession(): Promise<Session | null> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get(SESSION_COOKIE)?.value;
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(SESSION_COOKIE)?.value;
 
-  if (!token) {
+    if (!token) {
+      console.log('No session cookie found');
+      return null;
+    }
+
+    const session = await verifySession(token);
+    if (!session) {
+      console.log('Session verification returned null');
+    }
+    return session;
+  } catch (error) {
+    console.error('getSession error:', error);
     return null;
   }
-
-  return verifySession(token);
 }
 
 export async function setSessionCookie(token: string): Promise<void> {
