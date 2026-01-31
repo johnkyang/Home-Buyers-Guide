@@ -6,7 +6,15 @@ import { CONSENT_VERSION } from '@/lib/constants';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    let body;
+    try {
+      body = await request.json();
+    } catch (parseError) {
+      return NextResponse.json(
+        { success: false, error: `Invalid request body: ${parseError}` },
+        { status: 400 }
+      );
+    }
     const { fullName, email, phone, password, consent, subdomain } = body;
 
     // Validate required fields

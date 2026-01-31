@@ -166,11 +166,19 @@ export async function getBuyerByEmail(email: string): Promise<Buyer | null> {
   });
 
   if (!response.ok) {
-    console.error('Airtable error:', await response.text());
-    return null;
+    const errorText = await response.text();
+    console.error('Airtable error:', errorText);
+    throw new Error(`Airtable getBuyerByEmail failed: ${errorText}`);
   }
 
-  const data = await response.json();
+  const responseText = await response.text();
+  let data;
+  try {
+    data = JSON.parse(responseText);
+  } catch (e) {
+    throw new Error(`Failed to parse Airtable response: ${e}. Response: ${responseText.substring(0, 200)}`);
+  }
+
   if (!data.records || data.records.length === 0) {
     return null;
   }
@@ -248,7 +256,13 @@ export async function createBuyer(data: {
     throw new Error(`Failed to create buyer record: ${error}`);
   }
 
-  const record = await response.json();
+  const responseText = await response.text();
+  let record;
+  try {
+    record = JSON.parse(responseText);
+  } catch (e) {
+    throw new Error(`Failed to parse Airtable create response: ${e}. Response: ${responseText.substring(0, 200)}`);
+  }
   return mapBuyerRecord(record);
 }
 
