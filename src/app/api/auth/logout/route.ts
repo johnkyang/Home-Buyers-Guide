@@ -1,16 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { clearSessionCookie } from '@/lib/auth';
+
+const SESSION_COOKIE = 'homeready_session';
 
 export async function GET(request: NextRequest) {
-  await clearSessionCookie();
+  const url = new URL('/login', request.url);
+  const response = NextResponse.redirect(url);
 
-  // Get the origin from the request to handle both localhost and production
-  const url = new URL('/', request.url);
-  return NextResponse.redirect(url);
+  // Clear the session cookie on the response
+  response.cookies.set({
+    name: SESSION_COOKIE,
+    value: '',
+    path: '/',
+    maxAge: 0,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  });
+
+  return response;
 }
 
 export async function POST() {
-  await clearSessionCookie();
+  const response = NextResponse.json({ success: true });
 
-  return NextResponse.json({ success: true });
+  response.cookies.set({
+    name: SESSION_COOKIE,
+    value: '',
+    path: '/',
+    maxAge: 0,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  });
+
+  return response;
 }
