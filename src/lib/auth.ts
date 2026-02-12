@@ -71,15 +71,12 @@ export async function getSession(): Promise<Session | null> {
 
 export async function setSessionCookie(token: string): Promise<void> {
   const cookieStore = await cookies();
-  const isProduction = process.env.NODE_ENV === 'production';
   cookieStore.set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: isProduction,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: SESSION_DURATION / 1000,
     path: '/',
-    // Set domain for production to ensure cookie works across the site
-    ...(isProduction ? { domain: 'homereadyca.com' } : {}),
   });
 }
 

@@ -53,21 +53,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Set cookie using Next.js cookies API (most compatible method)
-    // Get the domain from the request for proper cookie scoping
-    const host = request.headers.get('host') || '';
-    const isLocalhost = host.includes('localhost');
-
+    // Set session cookie - omit domain so browser defaults to current host
     response.cookies.set({
       name: SESSION_COOKIE,
       value: token,
       path: '/',
       maxAge: SESSION_DURATION,
       httpOnly: true,
-      secure: !isLocalhost, // Only secure on production (HTTPS)
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      // Set domain for production to ensure cookie works across the site
-      ...(isLocalhost ? {} : { domain: 'homereadyca.com' }),
     });
 
     return response;
