@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
-import { getSession } from '@/lib/auth';
 import LoginForm from './LoginForm';
 
 export const metadata = {
@@ -7,13 +5,8 @@ export const metadata = {
   description: 'Sign in to continue your California homebuyer education course.',
 };
 
+// Middleware handles auth redirects - no need to check session here
 export default async function LoginPage() {
-  // Redirect if already logged in
-  const session = await getSession();
-  if (session) {
-    redirect('/dashboard');
-  }
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-6">
       <div className="max-w-md w-full">

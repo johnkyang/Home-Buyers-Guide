@@ -1,9 +1,12 @@
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import { getBuyerById } from '@/lib/airtable';
 import { MODULES } from '@/lib/constants';
 import { getModuleLessonIds } from '@/lib/course-content';
+
+// Force dynamic rendering and Node.js runtime for proper cookie handling
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 import {
   Compass,
   BarChart3,
@@ -38,13 +41,7 @@ export const metadata = {
 };
 
 export default async function DashboardPage() {
-  let session;
-  try {
-    session = await getSession();
-  } catch (error) {
-    console.error('Session error:', error);
-    redirect('/login');
-  }
+  const session = await getSession();
 
   if (!session) {
     redirect('/login');
@@ -139,12 +136,12 @@ export default async function DashboardPage() {
                 </div>
               </div>
               {nextModule && (
-                <Link
+                <a
                   href={`/course/${nextModule.id}`}
                   className="bg-[#D4A853] text-white px-6 py-3 rounded-xl font-bold hover:brightness-110 transition-all"
                 >
                   Continue Learning
-                </Link>
+                </a>
               )}
             </div>
           </div>
@@ -156,7 +153,7 @@ export default async function DashboardPage() {
           {modulesWithProgress.map((module) => {
             const Icon = moduleIconMap[module.id] || Compass;
             return (
-              <Link
+              <a
                 key={module.id}
                 href={`/course/${module.id}`}
                 className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100"
@@ -204,7 +201,7 @@ export default async function DashboardPage() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>

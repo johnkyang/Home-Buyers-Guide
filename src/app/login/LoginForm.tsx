@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -30,6 +28,7 @@ export default function LoginForm() {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(formData),
       });
 
@@ -40,10 +39,10 @@ export default function LoginForm() {
         return;
       }
 
-      // Redirect to dashboard on success
-      router.push('/dashboard');
-      router.refresh();
-    } catch {
+      // Redirect to dashboard after successful login
+      window.location.href = '/dashboard';
+    } catch (err) {
+      console.error('Login error:', err);
       setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);

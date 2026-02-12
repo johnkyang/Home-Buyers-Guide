@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { hashPassword, createSession, setSessionCookie, validatePassword, validateEmail, validatePhone } from '@/lib/auth';
+import { hashPassword, createSession, validatePassword, validateEmail, validatePhone } from '@/lib/auth';
 import { createBuyer, getBuyerByEmail, getRealtorBySubdomain } from '@/lib/airtable';
 import { sendBuyerRegistrationToAdmin, sendBuyerRegistrationToRealtor, sendWelcomeEmail } from '@/lib/email';
 import { CONSENT_VERSION } from '@/lib/constants';
+
+const SESSION_COOKIE = 'homeready_session';
+const SESSION_DURATION = 7 * 24 * 60 * 60; // 7 days in seconds
 
 export async function POST(request: NextRequest) {
   try {
@@ -102,17 +105,34 @@ export async function POST(request: NextRequest) {
       console.error('Error sending registration emails:', error);
     });
 
-    // Create session
+    // Create session token
     const token = await createSession({
       id: buyer.id,
       email: buyer.email,
       fullName: buyer.fullName,
     });
 
-    // Set session cookie
-    await setSessionCookie(token);
+    // Determine if we're in production
+    const isProduction = process.env.NODE_ENV === 'production';
 
-    return NextResponse.json({
+    // Build cookie string manually for maximum compatibility
+    const cookieParts = [
+      `${SESSION_COOKIE}=${token}`,
+      `Path=/`,
+      `Max-Age=${SESSION_DURATION}`,
+      `HttpOnly`,
+      `SameSite=Lax`,
+    ];
+
+    if (isProduction) {
+      cookieParts.push('Secure');
+      cookieParts.push('Domain=homereadyca.com');
+    }
+
+    const cookieString = cookieParts.join('; ');
+
+    // Create response with Set-Cookie header
+    const response = NextResponse.json({
       success: true,
       data: {
         id: buyer.id,
@@ -120,6 +140,11 @@ export async function POST(request: NextRequest) {
         email: buyer.email,
       },
     });
+
+    // Set cookie using the headers API directly
+    response.headers.set('Set-Cookie', cookieString);
+
+    return response;
   } catch (error) {
     console.error('Registration error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

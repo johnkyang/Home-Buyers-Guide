@@ -1,10 +1,13 @@
 import { redirect, notFound } from 'next/navigation';
-import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import { getBuyerById } from '@/lib/airtable';
 import { getModuleContent, getLesson, getNextLesson, getPreviousLesson, courseContent } from '@/lib/course-content';
 import LessonContent from './LessonContent';
 import MarkCompleteButton from './MarkCompleteButton';
+
+// Force dynamic rendering and Node.js runtime for proper cookie handling
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 interface LessonPageProps {
   params: Promise<{
@@ -13,25 +16,9 @@ interface LessonPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return courseContent.flatMap((module) =>
-    module.lessons.map((lesson) => ({
-      moduleId: module.id,
-      lessonId: lesson.id,
-    }))
-  );
-}
-
 export default async function LessonPage({ params }: LessonPageProps) {
   const { moduleId, lessonId } = await params;
-
-  let session;
-  try {
-    session = await getSession();
-  } catch (error) {
-    console.error('Session error:', error);
-    redirect('/login');
-  }
+  const session = await getSession();
 
   if (!session) {
     redirect('/login');
@@ -68,15 +55,15 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <nav className="mb-6 text-sm">
           <ol className="flex items-center space-x-2 flex-wrap">
             <li>
-              <Link href="/dashboard" className="text-gray-500 hover:text-[#1E3A5F]">
+              <a href="/dashboard" className="text-gray-500 hover:text-[#1E3A5F]">
                 Dashboard
-              </Link>
+              </a>
             </li>
             <li className="text-gray-400">/</li>
             <li>
-              <Link href={`/course/${moduleId}`} className="text-gray-500 hover:text-[#1E3A5F]">
+              <a href={`/course/${moduleId}`} className="text-gray-500 hover:text-[#1E3A5F]">
                 Module {module.number}
-              </Link>
+              </a>
             </li>
             <li className="text-gray-400">/</li>
             <li className="text-[#1E3A5F] font-medium truncate max-w-[200px]">
@@ -135,7 +122,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
         {/* Navigation */}
         <div className="flex items-center justify-between border-t border-gray-200 pt-6">
           {prevLesson ? (
-            <Link
+            <a
               href={`/course/${prevLesson.moduleId}/${prevLesson.lessonId}`}
               className="flex items-center gap-2 text-[#1E3A5F] hover:underline"
             >
@@ -143,13 +130,13 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Previous Lesson
-            </Link>
+            </a>
           ) : (
             <div />
           )}
 
           {nextLesson ? (
-            <Link
+            <a
               href={`/course/${nextLesson.moduleId}/${nextLesson.lessonId}`}
               className="btn-primary flex items-center gap-2"
             >
@@ -157,11 +144,11 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
+            </a>
           ) : (
-            <Link href="/dashboard" className="btn-accent">
+            <a href="/dashboard" className="btn-accent">
               Back to Dashboard
-            </Link>
+            </a>
           )}
         </div>
       </div>

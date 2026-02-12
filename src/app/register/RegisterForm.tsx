@@ -52,6 +52,7 @@ export default function RegisterForm({ subdomain }: RegisterFormProps) {
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // Ensure cookies are sent/received
         body: JSON.stringify({
           fullName: formData.fullName,
           email: formData.email,
@@ -69,9 +70,8 @@ export default function RegisterForm({ subdomain }: RegisterFormProps) {
         return;
       }
 
-      // Redirect to dashboard on success
-      router.push('/dashboard');
-      router.refresh();
+      // Use full page navigation to ensure cookie is sent with new request
+      window.location.href = '/dashboard';
     } catch {
       setError('An error occurred. Please try again.');
     } finally {

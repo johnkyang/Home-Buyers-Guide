@@ -1,29 +1,16 @@
-export interface Lesson {
-  id: string;
-  title: string;
-  content: string;
-  worksheetPlaceholder?: boolean;
-}
+# HomeReadyCA - California Homebuyer Education Course
+## REVISED CONTENT - Complete Course for Review
 
-export interface ModuleContent {
-  id: string;
-  number: number;
-  title: string;
-  description: string;
-  lessons: Lesson[];
-}
+---
 
-export const courseContent: ModuleContent[] = [
-  {
-    id: 'start-here',
-    number: 0,
-    title: 'Start Here',
-    description: 'Your 7-day action plan to get started',
-    lessons: [
-      {
-        id: 'start-here-1',
-        title: 'What to Do First',
-        content: `# Welcome to Your California Homebuying Journey!
+# Module 0: Start Here
+**Your 7-day action plan to get started**
+
+---
+
+## Lesson 1: What to Do First
+
+# Welcome to Your California Homebuying Journey!
 
 Congratulations on taking the first step toward homeownership! Whether you've been dreaming about this for years or just started thinking seriously about buying, you're in the right place. This course is designed specifically for California homebuyers like you, and we're going to walk through everything you need to know—step by step.
 
@@ -142,12 +129,13 @@ Now for the fun part! Start thinking about where you want to live and what you n
 
 **Coming up next:** We'll map out your complete homebuying timeline so you know exactly what to expect and when.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'start-here-2',
-        title: 'Your Homebuying Timeline',
-        content: `# Mapping Your Path to Homeownership
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 2: Your Homebuying Timeline
+
+# Mapping Your Path to Homeownership
 
 One of the biggest questions first-time buyers ask is: "How long does this whole process take?" The answer depends on where you're starting from—but here's the complete picture so you can plan accordingly.
 
@@ -312,12 +300,13 @@ Your agent will likely have recommendations, or you can research inspectors in y
 
 **Coming up next:** We'll help you assess your true readiness for homeownership with a comprehensive readiness check.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'start-here-3',
-        title: 'Homebuyer Readiness Assessment',
-        content: `# Are You Ready to Buy? Let's Find Out
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 3: Homebuyer Readiness Assessment
+
+# Are You Ready to Buy? Let's Find Out
 
 Before you dive headfirst into the homebuying process, let's do a thorough self-assessment. This isn't meant to discourage you—it's meant to help you understand exactly where you stand and what steps you might need to take.
 
@@ -497,20 +486,18 @@ You might need focused preparation if:
 
 **Coming up next:** Module 1 dives deep into understanding your budget and buying power—the real numbers behind what you can afford.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-    ],
-  },
-  {
-    id: 'budget-buying-power',
-    number: 1,
-    title: 'Budget + Buying Power',
-    description: 'Understanding your true buying capacity',
-    lessons: [
-      {
-        id: 'budget-1',
-        title: 'Understanding PITI and Your Monthly Payment',
-        content: `# What Will Your Mortgage Payment Really Be?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+# Module 1: Budget + Buying Power
+**Understanding your true buying capacity**
+
+---
+
+## Lesson 1: Understanding PITI and Your Monthly Payment
+
+# What Will Your Mortgage Payment Really Be?
 
 Here's something that surprises many first-time buyers: your mortgage payment isn't just the loan amount divided by the number of months. There are several components that make up your monthly housing payment, and understanding all of them is crucial for knowing what you can actually afford.
 
@@ -657,12 +644,13 @@ If you have a $400 car payment and $200 in student loans, that leaves $4,560 for
 
 **Coming up next:** Why the maximum amount you're approved for might not be the amount you should actually spend.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'budget-2',
-        title: 'Comfort Budget vs Maximum Approval',
-        content: `# Don't Max Out Your Mortgage
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 2: Comfort Budget vs Maximum Approval
+
+# Don't Max Out Your Mortgage
 
 Here's a secret that every homebuyer needs to hear: **just because a lender says you CAN borrow $600,000 doesn't mean you SHOULD.**
 
@@ -816,12 +804,13 @@ When setting your comfort budget, remember that homeownership comes with costs b
 
 **Coming up next:** A deep dive into ALL the costs of homeownership, so you're fully prepared.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'budget-3',
-        title: 'The True Cost of Homeownership',
-        content: `# Beyond the Mortgage: What Homeownership Really Costs
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 3: The True Cost of Homeownership
+
+# Beyond the Mortgage: What Homeownership Really Costs
 
 If you've only been thinking about your mortgage payment, you're missing a big part of the picture. Homeownership comes with a variety of costs, and being prepared for them will help you avoid financial stress once you're in your new home.
 
@@ -991,21 +980,18 @@ Before you close, and as you continue as a homeowner, you need reserves:
 
 **Coming up next:** Module 2 dives into the different types of mortgages available in California and which one might be right for you.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'mortgage-basics',
-    number: 2,
-    title: 'Mortgage Basics (CA)',
-    description: 'California-specific loan options explained',
-    lessons: [
-      {
-        id: 'mortgage-1',
-        title: 'Understanding Your Loan Options',
-        content: `# Conventional, FHA, VA—Which Loan Is Right for You?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+# Module 2: Mortgage Basics (CA)
+**California-specific loan options explained**
+
+---
+
+## Lesson 1: Understanding Your Loan Options
+
+# Conventional, FHA, VA—Which Loan Is Right for You?
 
 Choosing the right loan type can save you thousands of dollars and make the difference between qualifying and not qualifying. Let's break down the main options available to California homebuyers.
 
@@ -1212,12 +1198,13 @@ USDA loans are for homes in eligible rural areas and are backed by the U.S. Depa
 
 **Coming up next:** Understanding the difference between your interest rate and APR—and why both matter.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'mortgage-2',
-        title: 'Interest Rate vs. APR Explained',
-        content: `# What's the Real Cost of Your Loan?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 2: Interest Rate vs. APR Explained
+
+# What's the Real Cost of Your Loan?
 
 When you shop for a mortgage, you'll see two percentages quoted: the **interest rate** and the **APR (Annual Percentage Rate)**. They're not the same thing, and understanding the difference will help you compare loan offers accurately.
 
@@ -1379,12 +1366,13 @@ Your rate starts lower but can change after an initial fixed period.
 
 **Coming up next:** How to read your Loan Estimate—the key document that shows exactly what you're getting.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'mortgage-3',
-        title: 'How to Read Your Loan Estimate',
-        content: `# Your Loan Estimate: Understanding Every Number
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 3: How to Read Your Loan Estimate
+
+# Your Loan Estimate: Understanding Every Number
 
 Within three business days of applying for a mortgage, you'll receive a Loan Estimate (LE). This standardized three-page document shows you the key terms of the loan you've applied for. Understanding it is crucial for making informed decisions and comparing lenders.
 
@@ -1566,21 +1554,18 @@ If your lender significantly increases fees that shouldn't change, push back or 
 
 **Coming up next:** Module 3 covers the documents you'll need and how underwriting works.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'documents-underwriting',
-    number: 3,
-    title: 'Documents + Underwriting',
-    description: 'Getting your paperwork ready',
-    lessons: [
-      {
-        id: 'docs-1',
-        title: 'Income Documentation—What You\'ll Need',
-        content: `# Proving Your Income: A Complete Guide
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+# Module 3: Documents + Underwriting
+**Getting your paperwork ready**
+
+---
+
+## Lesson 1: Income Documentation—What You'll Need
+
+# Proving Your Income: A Complete Guide
 
 Lenders need to verify that you have the income to support your mortgage payment. The documentation required depends on how you earn your money. Let's break it down by employment type.
 
@@ -1748,12 +1733,13 @@ This is why it's crucial to report all income on your taxes if you plan to buy a
 
 **Coming up next:** How to document your assets and what lenders are looking for.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'docs-2',
-        title: 'Asset Documentation and Sourcing',
-        content: `# Where's Your Money Coming From?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 2: Asset Documentation and Sourcing
+
+# Where's Your Money Coming From?
 
 Lenders don't just want to know that you have money—they want to know where it came from. This is called "sourcing" your assets, and it's one of the most important (and sometimes frustrating) parts of the mortgage process.
 
@@ -1935,13 +1921,13 @@ Some loan programs require you to have reserves—money left over after you clos
 
 **Coming up next:** Everything you need to know about using gift funds for your home purchase.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-        worksheetPlaceholder: true,
-      },
-      {
-        id: 'docs-3',
-        title: 'Using Gift Funds—The Complete Guide',
-        content: `# Getting Help from Family: How Gift Funds Work
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 3: Using Gift Funds—The Complete Guide
+
+# Getting Help from Family: How Gift Funds Work
 
 Good news: using gift money for your down payment is absolutely allowed and very common! But there are specific rules and documentation requirements you need to follow.
 
@@ -2094,21 +2080,18 @@ Plan extra time for international gifts.
 
 **Coming up next:** Module 4 covers California's Down Payment Assistance Programs—free money that can help you buy!
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'down-payment-assistance',
-    number: 4,
-    title: 'Down Payment Assistance',
-    description: 'California DPA programs and eligibility',
-    lessons: [
-      {
-        id: 'dpa-1',
-        title: 'Types of Down Payment Assistance',
-        content: `# Down Payment Assistance: Getting Help to Buy Your Home
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+# Module 4: Down Payment Assistance
+**California DPA programs and eligibility**
+
+---
+
+## Lesson 1: Types of Down Payment Assistance
+
+# Down Payment Assistance: Getting Help to Buy Your Home
 
 Here's something many first-time buyers don't realize: **you don't have to come up with the entire down payment yourself.** California has numerous programs designed to help buyers—especially first-time and moderate-income buyers—get into homes.
 
@@ -2226,12 +2209,13 @@ Most DPA programs require you to use a specific first mortgage product or lender
 
 **Coming up next:** California's major DPA programs and how to qualify.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current DPA program availability and requirements.*`,
-      },
-      {
-        id: 'dpa-2',
-        title: 'California\'s Major DPA Programs',
-        content: `# CalHFA, GSFA, and Other California Programs
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current DPA program availability and requirements.*
+
+---
+
+## Lesson 2: California's Major DPA Programs
+
+# CalHFA, GSFA, and Other California Programs
 
 California has some of the best down payment assistance programs in the country. Let's explore the major options available to you.
 
@@ -2379,12 +2363,13 @@ When evaluating DPA options, consider:
 
 **Coming up next:** A detailed look at DPA eligibility requirements.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current program availability, terms, and requirements.*`,
-      },
-      {
-        id: 'dpa-3',
-        title: 'DPA Eligibility Requirements',
-        content: `# Do You Qualify for Down Payment Assistance?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current program availability, terms, and requirements.*
+
+---
+
+## Lesson 3: DPA Eligibility Requirements
+
+# Do You Qualify for Down Payment Assistance?
 
 While each program has specific requirements, there are common eligibility factors across most California DPA programs. Let's break them down.
 
@@ -2539,12 +2524,13 @@ Higher credit scores may qualify for:
 
 **Coming up next:** How to choose the right DPA program for your situation.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current eligibility requirements.*`,
-      },
-      {
-        id: 'dpa-4',
-        title: 'Choosing the Right DPA Program',
-        content: `# Which Down Payment Assistance Is Best for You?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current eligibility requirements.*
+
+---
+
+## Lesson 4: Choosing the Right DPA Program
+
+# Which Down Payment Assistance Is Best for You?
 
 With multiple programs available, how do you choose? The right program depends on your unique situation. Let's work through the decision.
 
@@ -2701,20 +2687,18 @@ DPA isn't for everyone. Consider skipping it if:
 
 **Coming up next:** Module 5 covers finding and winning your dream home!
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current program availability and terms.*`,
-      },
-    ],
-  },
-  {
-    id: 'home-search-offers',
-    number: 5,
-    title: 'Home Search + Offer Strategy',
-    description: 'Finding and winning your dream home',
-    lessons: [
-      {
-        id: 'search-1',
-        title: 'Defining What You Really Want',
-        content: `# Needs vs. Wants: Creating Your Home Wish List
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Check with your lender for current program availability and terms.*
+
+---
+
+# Module 5: Home Search + Offer Strategy
+**Finding and winning your dream home**
+
+---
+
+## Lesson 1: Defining What You Really Want
+
+# Needs vs. Wants: Creating Your Home Wish List
 
 Before you start touring homes, you need clarity on what you're looking for. Without this, you'll either waste time on wrong properties or struggle to make decisions when you find the right one.
 
@@ -2905,12 +2889,13 @@ When you start viewing homes:
 
 **Coming up next:** How to write offers that win in competitive California markets.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'search-2',
-        title: 'Writing Offers That Win',
-        content: `# Competing and Winning in California's Market
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 2: Writing Offers That Win
+
+# Competing and Winning in California's Market
 
 Found a home you love? Now you need to write an offer that gets accepted. In competitive California markets, how you structure your offer can matter as much as the price itself.
 
@@ -3087,12 +3072,13 @@ Losing out on a home hurts, especially if you fell in love with it. But it's par
 
 **Coming up next:** Understanding contingencies and how they protect you.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-      },
-      {
-        id: 'search-3',
-        title: 'Protecting Yourself with Contingencies',
-        content: `# Contingencies: Your Safety Net
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+## Lesson 3: Protecting Yourself with Contingencies
+
+# Contingencies: Your Safety Net
 
 Contingencies are clauses in your purchase contract that allow you to back out (and get your earnest money back) if certain conditions aren't met. They're your protection against buying a money pit or losing your deposit.
 
@@ -3237,21 +3223,18 @@ Shorten or waive contingencies. You might win more offers but take on more risk.
 
 **Coming up next:** Module 6 covers the escrow process—what happens after your offer is accepted.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'escrow-process',
-    number: 6,
-    title: 'Escrow Process',
-    description: 'Navigating from contract to close',
-    lessons: [
-      {
-        id: 'escrow-1',
-        title: 'Earnest Money and Opening Escrow',
-        content: `# Your Offer Was Accepted—Now What?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program.*
+
+---
+
+# Module 6: Escrow Process
+**Navigating from contract to close**
+
+---
+
+## Lesson 1: Earnest Money and Opening Escrow
+
+# Your Offer Was Accepted—Now What?
 
 Congratulations! Your offer has been accepted, and you're officially "in contract." This is an exciting moment, but the work isn't over. In fact, one of the most important phases of the homebuying process is just beginning: escrow.
 
@@ -3412,12 +3395,13 @@ Your specific timeline depends on your loan type, the lender's processing speed,
 
 **Coming up next:** How to protect yourself from wire fraud—one of the most dangerous threats to homebuyers.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'escrow-2',
-        title: 'Wire Fraud Prevention',
-        content: `# Protecting Your Money: Wire Fraud Is Real
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 2: Wire Fraud Prevention
+
+# Protecting Your Money: Wire Fraud Is Real
 
 This might be the most important lesson in this entire course. Wire fraud targeting homebuyers is one of the fastest-growing crimes in real estate, and the losses are devastating—often your entire down payment, gone in minutes with little chance of recovery.
 
@@ -3544,12 +3528,13 @@ If your escrow company only sends wire instructions via email with no other veri
 
 **Coming up next:** Understanding the appraisal and underwriting process—the final steps before your loan is approved.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'escrow-3',
-        title: 'Appraisal and Underwriting',
-        content: `# The Appraisal and Underwriting Process
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 3: Appraisal and Underwriting
+
+# The Appraisal and Underwriting Process
 
 You're in escrow, your inspections are done, and things are moving forward. Now comes two critical steps that happen mostly behind the scenes: the appraisal and underwriting. These determine whether your lender will actually fund your loan—and they can make or break your deal.
 
@@ -3712,12 +3697,13 @@ When the underwriter is satisfied with everything, they issue a "clear to close"
 
 **Coming up next:** Understanding rate locks—when to lock your interest rate and how to protect yourself from rate increases.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'escrow-4',
-        title: 'Rate Lock Strategies',
-        content: `# When to Lock Your Interest Rate
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 4: Rate Lock Strategies
+
+# When to Lock Your Interest Rate
 
 Your interest rate is one of the biggest factors in your monthly payment, and even a small change can add up to thousands of dollars over the life of your loan. So when should you lock in your rate, and what does that actually mean?
 
@@ -3853,21 +3839,18 @@ Your loan officer deals with rate locks every day. Here's how to work with them 
 
 **Coming up next:** Module 7 covers home inspections—your most important protection against buying a money pit.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'inspections-negotiation',
-    number: 7,
-    title: 'Inspections + Negotiation',
-    description: 'Protecting your investment',
-    lessons: [
-      {
-        id: 'inspect-1',
-        title: 'Types of Inspections',
-        content: `# Home Inspections: Your Best Protection
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+# Module 7: Inspections + Negotiation
+**Protecting your investment**
+
+---
+
+## Lesson 1: Types of Inspections
+
+# Home Inspections: Your Best Protection
 
 A home might look beautiful on the surface—fresh paint, staged furniture, gleaming countertops—but what's going on behind the walls, under the floors, and on the roof? That's what inspections reveal.
 
@@ -4084,12 +4067,13 @@ Plan on spending **$500-$1,500+** total on inspections, depending on the propert
 
 **Coming up next:** What to do when the inspection reveals issues—how to negotiate repairs and credits.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'inspect-2',
-        title: 'Negotiating Repairs',
-        content: `# The Inspection Report Is In—Now What?
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 2: Negotiating Repairs
+
+# The Inspection Report Is In—Now What?
 
 Your inspector has finished their work and delivered a detailed report. It might be 30-50 pages long, full of photos, notes, and findings. Some of it will be routine. Some of it might be concerning.
 
@@ -4266,12 +4250,13 @@ Before you submit your request, consider getting contractor estimates for major 
 
 **Coming up next:** How to prepare for and make the most of your inspection day.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'inspect-3',
-        title: 'Inspection Day Checklist',
-        content: `# Making the Most of Inspection Day
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 3: Inspection Day Checklist
+
+# Making the Most of Inspection Day
 
 Inspection day is one of the most important days in your homebuying journey. It's your chance to learn everything about the home you're about to buy—from the condition of the roof to the age of the water heater.
 
@@ -4461,21 +4446,18 @@ After reviewing everything, you need to decide:
 
 **Coming up next:** Module 8 covers homeowners insurance in California—including the unique challenges of earthquake, wildfire, and flood coverage.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-  {
-    id: 'insurance',
-    number: 8,
-    title: 'Insurance (CA)',
-    description: 'California homeowners insurance essentials',
-    lessons: [
-      {
-        id: 'insurance-1',
-        title: 'Homeowners Insurance Basics',
-        content: `# Understanding Homeowners Insurance
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+# Module 8: Insurance (CA)
+**California homeowners insurance essentials**
+
+---
+
+## Lesson 1: Homeowners Insurance Basics
+
+# Understanding Homeowners Insurance
 
 Here's something that surprises many first-time buyers: your lender requires you to have homeowners insurance before they'll fund your loan. But even if it weren't required, you'd want it. Your home is likely the biggest investment you'll ever make, and insurance protects it.
 
@@ -4594,12 +4576,13 @@ Your deductible is what you pay out of pocket before insurance kicks in.
 
 **Coming up next:** How to shop for homeowners insurance and get the best coverage at the best price.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'insurance-2',
-        title: 'Shopping for Insurance',
-        content: `# Finding the Right Policy at the Right Price
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 2: Shopping for Insurance
+
+# Finding the Right Policy at the Right Price
 
 Shopping for homeowners insurance can feel overwhelming—there are dozens of companies, confusing coverage options, and prices that vary wildly. But with a systematic approach, you can find excellent coverage without overpaying.
 
@@ -4764,13 +4747,13 @@ Your insurance premium will be included in your monthly mortgage payment (part o
 
 **Coming up next:** California-specific insurance considerations—earthquake, flood, and wildfire coverage you need to understand.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-        worksheetPlaceholder: true,
-      },
-      {
-        id: 'insurance-3',
-        title: 'California-Specific Coverage',
-        content: `# Earthquake, Fire, and Flood: California's Unique Insurance Challenges
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 3: California-Specific Coverage
+
+# Earthquake, Fire, and Flood: California's Unique Insurance Challenges
 
 California is beautiful, but Mother Nature brings some unique risks. Standard homeowners insurance doesn't cover three of the biggest threats California homeowners face: earthquakes, floods, and wildfires (well, wildfire is technically covered, but getting that coverage is increasingly challenging).
 
@@ -4960,20 +4943,18 @@ Here's what your total insurance costs might look like:
 
 **Coming up next:** Module 9—the finish line! Understanding your Closing Disclosure, doing your final walkthrough, and settling into your new home.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-    ],
-  },
-  {
-    id: 'closing-first-30-days',
-    number: 9,
-    title: 'Closing + First 30 Days',
-    description: 'The finish line and your new beginning',
-    lessons: [
-      {
-        id: 'closing-1',
-        title: 'Understanding the Closing Disclosure',
-        content: `# Your Closing Disclosure: The Final Numbers
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+# Module 9: Closing + First 30 Days
+**The finish line and your new beginning**
+
+---
+
+## Lesson 1: Understanding the Closing Disclosure
+
+# Your Closing Disclosure: The Final Numbers
 
 You're almost there. You've survived inspections, appraisal, underwriting, and all the ups and downs of escrow. Now comes one of the last critical documents you'll review: the Closing Disclosure (CD).
 
@@ -5113,12 +5094,13 @@ One of the most important things to do is compare your Closing Disclosure to the
 
 **Coming up next:** Your final walkthrough—the last step before you sign.
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-      },
-      {
-        id: 'closing-2',
-        title: 'Final Walkthrough',
-        content: `# Your Final Walkthrough: The Last Look Before You Sign
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 2: Final Walkthrough
+
+# Your Final Walkthrough: The Last Look Before You Sign
 
 The final walkthrough is exactly what it sounds like—your last chance to walk through the property before you officially own it. It's not another inspection. It's a verification that the home is in the condition you agreed to buy it in.
 
@@ -5301,13 +5283,13 @@ The seller should have removed **all** personal property unless you agreed other
 
 **Coming up next:** Closing day and your first 30 days as a homeowner—you're about to get the keys!
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-        worksheetPlaceholder: true,
-      },
-      {
-        id: 'closing-3',
-        title: 'First 30 Days as a Homeowner',
-        content: `# Congratulations—You Own a Home!
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
+
+---
+
+## Lesson 3: First 30 Days as a Homeowner
+
+# Congratulations—You Own a Home!
 
 This is it. You've made it through the entire homebuying process—credit preparation, loan applications, house hunting, inspections, negotiations, escrow, and closing. The keys are in your hand, and the home is yours.
 
@@ -5547,87 +5529,18 @@ Welcome to homeownership. You've earned it.
 
 ---
 
-*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*`,
-        worksheetPlaceholder: true,
-      },
-    ],
-  },
-];
+*This content is for educational purposes only and is not a commitment to lend or a guarantee of eligibility for any loan program. Always consult with a licensed loan officer for advice specific to your situation.*
 
-export function getModuleContent(moduleId: string): ModuleContent | undefined {
-  return courseContent.find((m) => m.id === moduleId);
-}
+---
 
-export function getLesson(moduleId: string, lessonId: string): Lesson | undefined {
-  const module = getModuleContent(moduleId);
-  return module?.lessons.find((l) => l.id === lessonId);
-}
+# End of Course Content
 
-export function getNextLesson(
-  moduleId: string,
-  currentLessonId: string
-): { moduleId: string; lessonId: string } | null {
-  const moduleIndex = courseContent.findIndex((m) => m.id === moduleId);
-  if (moduleIndex === -1) return null;
+**Total: 10 Modules, 30+ Lessons**
 
-  const module = courseContent[moduleIndex];
-  const lessonIndex = module.lessons.findIndex((l) => l.id === currentLessonId);
+*This document is for educational purposes only and does not constitute financial, legal, or real estate advice. Always consult with licensed professionals for advice specific to your situation.*
 
-  if (lessonIndex < module.lessons.length - 1) {
-    return {
-      moduleId,
-      lessonId: module.lessons[lessonIndex + 1].id,
-    };
-  }
+**COMPLIANCE NOTICE:**
+*All course content is for educational purposes only. This is not a commitment to lend. Your eligibility for any loan program depends on your specific circumstances and is subject to credit and property approval. Down payment assistance programs have specific eligibility requirements and limited availability—check with your lender for current terms and program status.*
 
-  if (moduleIndex < courseContent.length - 1) {
-    const nextModule = courseContent[moduleIndex + 1];
-    if (nextModule.lessons.length > 0) {
-      return {
-        moduleId: nextModule.id,
-        lessonId: nextModule.lessons[0].id,
-      };
-    }
-  }
+© HomeReadyCA
 
-  return null;
-}
-
-export function getPreviousLesson(
-  moduleId: string,
-  currentLessonId: string
-): { moduleId: string; lessonId: string } | null {
-  const moduleIndex = courseContent.findIndex((m) => m.id === moduleId);
-  if (moduleIndex === -1) return null;
-
-  const module = courseContent[moduleIndex];
-  const lessonIndex = module.lessons.findIndex((l) => l.id === currentLessonId);
-
-  if (lessonIndex > 0) {
-    return {
-      moduleId,
-      lessonId: module.lessons[lessonIndex - 1].id,
-    };
-  }
-
-  if (moduleIndex > 0) {
-    const prevModule = courseContent[moduleIndex - 1];
-    if (prevModule.lessons.length > 0) {
-      return {
-        moduleId: prevModule.id,
-        lessonId: prevModule.lessons[prevModule.lessons.length - 1].id,
-      };
-    }
-  }
-
-  return null;
-}
-
-export function getAllLessonIds(): string[] {
-  return courseContent.flatMap((m) => m.lessons.map((l) => l.id));
-}
-
-export function getModuleLessonIds(moduleId: string): string[] {
-  const module = getModuleContent(moduleId);
-  return module?.lessons.map((l) => l.id) || [];
-}

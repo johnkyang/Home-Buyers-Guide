@@ -1,8 +1,11 @@
 import { redirect, notFound } from 'next/navigation';
-import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import { getBuyerById } from '@/lib/airtable';
 import { getModuleContent, courseContent } from '@/lib/course-content';
+
+// Force dynamic rendering and Node.js runtime for proper cookie handling
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 interface ModulePageProps {
   params: Promise<{
@@ -10,22 +13,9 @@ interface ModulePageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return courseContent.map((module) => ({
-    moduleId: module.id,
-  }));
-}
-
 export default async function ModulePage({ params }: ModulePageProps) {
   const { moduleId } = await params;
-
-  let session;
-  try {
-    session = await getSession();
-  } catch (error) {
-    console.error('Session error:', error);
-    redirect('/login');
-  }
+  const session = await getSession();
 
   if (!session) {
     redirect('/login');
@@ -42,10 +32,8 @@ export default async function ModulePage({ params }: ModulePageProps) {
     completedLessons = buyer?.progress.completedLessons || [];
   } catch (error) {
     console.error('Error fetching buyer:', error);
-    // Continue with empty progress rather than crashing
   }
 
-  // Find next incomplete lesson
   const nextIncompleteLesson = module.lessons.find(
     (lesson) => !completedLessons.includes(lesson.id)
   );
@@ -57,15 +45,15 @@ export default async function ModulePage({ params }: ModulePageProps) {
         <nav className="mb-6 text-sm">
           <ol className="flex items-center space-x-2">
             <li>
-              <Link href="/dashboard" className="text-gray-500 hover:text-[#1E3A5F]">
+              <a href="/dashboard" className="text-gray-500 hover:text-[#1E3A5F]">
                 Dashboard
-              </Link>
+              </a>
             </li>
             <li className="text-gray-400">/</li>
             <li>
-              <Link href="/course" className="text-gray-500 hover:text-[#1E3A5F]">
+              <a href="/course" className="text-gray-500 hover:text-[#1E3A5F]">
                 Course
-              </Link>
+              </a>
             </li>
             <li className="text-gray-400">/</li>
             <li className="text-[#1E3A5F] font-medium">Module {module.number}</li>
@@ -115,7 +103,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
             const isNext = nextIncompleteLesson?.id === lesson.id;
 
             return (
-              <Link
+              <a
                 key={lesson.id}
                 href={`/course/${moduleId}/${lesson.id}`}
                 className={`card flex items-center gap-4 hover:shadow-lg transition-all ${
@@ -158,7 +146,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -166,7 +154,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         {/* Navigation */}
         <div className="mt-8 flex justify-between">
           {module.number > 0 && (
-            <Link
+            <a
               href={`/course/${courseContent[module.number - 1]?.id}`}
               className="text-[#1E3A5F] hover:underline flex items-center gap-2"
             >
@@ -174,11 +162,11 @@ export default async function ModulePage({ params }: ModulePageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Previous Module
-            </Link>
+            </a>
           )}
           <div className="flex-1" />
           {module.number < courseContent.length - 1 && (
-            <Link
+            <a
               href={`/course/${courseContent[module.number + 1]?.id}`}
               className="text-[#1E3A5F] hover:underline flex items-center gap-2"
             >
@@ -186,7 +174,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
+            </a>
           )}
         </div>
       </div>

@@ -3,9 +3,11 @@ import { cookies } from 'next/headers';
 import bcrypt from 'bcryptjs';
 import { SessionUser, Session } from '@/types';
 
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || 'default-secret-change-in-production'
-);
+// Read JWT_SECRET fresh each time to avoid module caching issues
+function getJwtSecret() {
+  const secret = process.env.JWT_SECRET || 'default-secret-change-in-production';
+  return new TextEncoder().encode(secret);
+}
 
 const SESSION_COOKIE = 'homeready_session';
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
@@ -31,14 +33,14 @@ export async function createSession(user: SessionUser): Promise<string> {
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime(expires)
-    .sign(JWT_SECRET);
+    .sign(getJwtSecret());
 
   return token;
 }
 
 export async function verifySession(token: string): Promise<Session | null> {
   try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, getJwtSecret());
     return payload as unknown as Session;
   } catch (error) {
     console.error('Session verification failed:', error);
@@ -69,12 +71,15 @@ export async function getSession(): Promise<Session | null> {
 
 export async function setSessionCookie(token: string): Promise<void> {
   const cookieStore = await cookies();
+  const isProduction = process.env.NODE_ENV === 'production';
   cookieStore.set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: isProduction,
     sameSite: 'lax',
     maxAge: SESSION_DURATION / 1000,
     path: '/',
+    // Set domain for production to ensure cookie works across the site
+    ...(isProduction ? { domain: 'homereadyca.com' } : {}),
   });
 }
 
